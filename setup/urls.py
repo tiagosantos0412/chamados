@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from chamados.views import chamados_list
+from chamados.views import ChamadosListView, ChamadosCreateView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', chamados_list)
+    path('', ChamadosListView.as_view()),
+    path("create", ChamadosCreateView.as_view())
 ]

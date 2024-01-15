@@ -16,7 +16,7 @@
     </header>
     <main class="container">
         <h1>Listagem de Chamados</h1>
-        {% if chamados %}
+        {% if chamados_list %}
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -30,7 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for chamado in chamados %}
+                    {% for chamado in chamados_list %}
                         <tr>
                             <th scope="row">{{ chamado.pk }}</th>
                             <td>{{ chamado.titulo }}</td>
