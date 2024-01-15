@@ -2,6 +2,6 @@ from django.shortcuts import render
 from.models import Chamados
 
 # Create your views here.
-def listar_chamados(request):
+def chamados_list(request):
     chamados = Chamados.objects.all()
-    return render(request, "chamados/listar_chamados.html", {"chamados": chamados})
+    return render(request, "chamados/chamados_list.html", {"chamados": chamados})
