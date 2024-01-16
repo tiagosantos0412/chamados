@@ -2,15 +2,30 @@
 {% load crispy_forms_tags %}
  
 {% block page_title %}
-    Cadastro de Chamados
+    {% if chamados.pk %}
+        Editar Status do Chamado
+    {% else %}
+        Cadastro de Chamados
+    {% endif %}
+    
 {% endblock page_title %} 
 
 {% block content %}
-    <h1>Novo Chamado</h1>
+    {% if chamados.pk %}
+        <h1>Editar Status do Chamado</h1>
+    {% else %}
+        <h1>Novo Chamado</h1>
+    {% endif %}
+    
     <form  method="POST" action="">
         {% csrf_token %}
         {{ form | crispy }}
-        <button type="submit" class="btn btn-success mb-3">Cadastrar</button>
+
+        {% if chamados.pk %}
+            <button type="submit" class="btn btn-success mb-3">Salvar</button>
+        {% else %}
+            <button type="submit" class="btn btn-success mb-3">Cadastrar</button>
+        {% endif %}
     </form>
 
     <a href="{% url 'chamados_list' %}" class="btn btn-success mb-3">Listar Chamados</a>

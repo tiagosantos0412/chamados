@@ -15,6 +15,7 @@
                 <th scope="col">Descrição</th>
                 <th scope="col">Data Criação</th>
                 <th scope="col">Categoria</th>
+                <th scope="col">Status</th>
                 <th scope="col">Data Encerramento</th>
                 <th scope="col">Ações</th>
             </tr>
@@ -25,10 +26,12 @@
                 <th scope="row">{{ chamado.pk }}</th>
                 <td>{{ chamado.titulo }}</td>
                 <td>{{ chamado.descricao }}</td>
-                <td>{{ chamado.criado_em }}</td>
+                <td>{{ chamado.criado_em |date:"d/m/Y" }}</td>
                 <td>{{ chamado.get_categoria_display }}</td>
-                <td>{{ chamado.encerrado_em|default:"-" }}</td>
+                <td>{{ chamado.get_status_display }}</td>
+                <td>{{ chamado.encerrado_em|date:"d/m/Y"|default:"-" }}</td>
                 <td><a href="#" class="btn btn-success btn-sm">Concluir</a></td>
+                <td><a href="{% url 'chamados_update' pk=chamado.pk %}" class="btn btn-secondary btn-sm">Editar</a></td>
                 <td><a href="#" class="btn btn-danger btn-sm">Excluir</a></td>
             </tr>
             {% endfor %}
