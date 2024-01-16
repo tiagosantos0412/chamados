@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Excluir Chamado
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Excluir Chamado</h1>
+
+    <p>Tem certeza que deseja excluir o chamado <strong>{{ chamados.titulo }}</strong>?</p>
+    <p>Status do chamado: <strong>{{ chamados.get_status_display }}</strong></p>
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+        <a href="{% url 'chamados_list' %}" class="btn btn-success ">Cancelar</a>
+    </form>
+{% endblock content %}
+    

@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from.models import Chamados
 
@@ -20,4 +20,8 @@ class ChamadosCreateView(CreateView):
 class ChamadosUpdateView(UpdateView):
     model = Chamados
     fields = ['status']
+    success_url = reverse_lazy('chamados_list')
+
+class ChamadosDeleteView(DeleteView):
+    model = Chamados
     success_url = reverse_lazy('chamados_list')
