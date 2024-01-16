@@ -22,6 +22,6 @@ from chamados.views import ChamadosListView, ChamadosCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', ChamadosListView.as_view()),
-    path("create", ChamadosCreateView.as_view())
+    path('', ChamadosListView.as_view(), name='chamados_list'),
+    path("create", ChamadosCreateView.as_view(), name='chamados_create'),
 ]
