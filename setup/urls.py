@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from chamados.views import ChamadosListView, ChamadosCreateView, ChamadosUpdateView, ChamadosDeleteView
+from chamados.views import ChamadosListView, ChamadosCreateView, ChamadosUpdateView, ChamadosDeleteView, ChamadosCompleteView
 
 
 urlpatterns = [
@@ -26,4 +26,5 @@ urlpatterns = [
     path('create', ChamadosCreateView.as_view(), name='chamados_create'),
     path('update/<int:pk>', ChamadosUpdateView.as_view(), name='chamados_update'),
     path('delete/<int:pk>', ChamadosDeleteView.as_view(), name='chamados_delete'),
+    path('complete/<int:pk>', ChamadosCompleteView.as_view(), name='chamados_complete'),
 ]

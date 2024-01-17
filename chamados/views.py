@@ -1,5 +1,7 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from datetime import date
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404, redirect
 from.models import Chamados
 
 # Create your views here.
@@ -25,3 +27,13 @@ class ChamadosUpdateView(UpdateView):
 class ChamadosDeleteView(DeleteView):
     model = Chamados
     success_url = reverse_lazy('chamados_list')
+
+class ChamadosCompleteView(View):
+    def get(self, request, pk):
+        chamados = get_object_or_404(Chamados, pk = pk)
+        chamados.encerrado_em = date.today()
+        chamados.status = 3
+        chamados.save()
+        return redirect('chamados_list')
+
+    

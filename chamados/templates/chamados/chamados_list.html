@@ -29,8 +29,12 @@
                 <td>{{ chamado.criado_em |date:"d/m/Y" }}</td>
                 <td>{{ chamado.get_categoria_display }}</td>
                 <td>{{ chamado.get_status_display }}</td>
-                <td>{{ chamado.encerrado_em|date:"d/m/Y"|default:"-" }}</td>
-                <td><a href="#" class="btn btn-success btn-sm">Concluir</a></td>
+                {% if chamado.status == 3 %}
+                    <td>{{ chamado.encerrado_em|date:"d/m/Y"|default:"-" }}</td>
+                {% else %}
+                    <td>-</td>
+                {% endif %}
+                <td><a href="{% url 'chamados_complete' pk=chamado.pk %}" class="btn btn-success btn-sm">Concluir</a></td>
                 <td><a href="{% url 'chamados_update' pk=chamado.pk %}" class="btn btn-secondary btn-sm">Editar</a></td>
                 <td><a href="{% url 'chamados_delete' pk=chamado.pk %}" class="btn btn-danger btn-sm">Excluir</a></td>
             </tr>
