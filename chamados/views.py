@@ -31,9 +31,10 @@ class ChamadosDeleteView(DeleteView):
 class ChamadosCompleteView(View):
     def get(self, request, pk):
         chamados = get_object_or_404(Chamados, pk = pk)
-        chamados.encerrado_em = date.today()
-        chamados.status = 3
-        chamados.save()
+        #chamados.encerrado_em = date.today()
+        #chamados.status = 3
+        #chamados.save()
+        chamados.mark_has_complete()
         return redirect('chamados_list')
 
     

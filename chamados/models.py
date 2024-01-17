@@ -1,3 +1,4 @@
+from datetime import date
 from django.db import models
 
 # Create your models here.
@@ -19,3 +20,13 @@ class Chamados(models.Model):
     categoria = models.IntegerField(choices=CATEGORIA_CHOICES, null=False, blank=False)
     status = models.IntegerField(choices=STATUS_CHOICES, default=1, null=False, blank=False)
     encerrado_em = models.DateField(null=True)
+
+    class Meta:
+        ordering = ['status']
+
+    def mark_has_complete(self):
+        if not self.status == 3:
+            self.encerrado_em = date.today()
+            self.status = 3
+            self.save()         
+
